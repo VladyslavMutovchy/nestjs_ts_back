@@ -8,6 +8,14 @@ async function start() {
   const PORT = process.env.PORT || 5000;
   const app = await NestFactory.create(AppModule);
 
+  app.setGlobalPrefix('api/v1');
+
+  app.enableCors({
+    origin: 'http://localhost:3000', // замените на нужный вам источник
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // если необходимо передавать куки
+  });
+
   const config = new DocumentBuilder()
     .setTitle('Урок по Nest? памагити.....')
     .setDescription('Документация REST API')
