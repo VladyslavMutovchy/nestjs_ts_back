@@ -4,5 +4,5 @@
 export class CreateSkillDto {
  
   datum_id: number;
-  value: string;
+  skill: string;
 }

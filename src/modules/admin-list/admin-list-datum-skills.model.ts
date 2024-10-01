@@ -15,5 +15,5 @@ export class DatumSkills extends Model<DatumSkills> {
 
   // Уникальный скилл
   @Column({ type: DataType.STRING ,allowNull: false })
-  value: string;
+  skill: string;
 }

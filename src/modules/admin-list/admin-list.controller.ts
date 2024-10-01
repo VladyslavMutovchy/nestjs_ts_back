@@ -53,6 +53,14 @@ export class AdminListController {
     return newSkill;
   }
 
+  @ApiOperation({ summary: 'Обновление cкилла' })
+  @ApiResponse({ status: 200, type: DatumSkills })
+  @Put('/update-skill/:id')
+  async updateSkill(@Param('id') id: number, @Body() skillDto: CreateSkillDto) {
+    await DatumSkills.update(skillDto, { where: { id } });
+    return DatumSkills.findByPk(id);
+  }
+
   @ApiOperation({ summary: 'Получение всех скиллов' })
   @ApiResponse({ status: 200, type: [DatumSkills] })
   @Get('/getSkills')

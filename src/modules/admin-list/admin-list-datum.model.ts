@@ -8,10 +8,10 @@ export class Datum extends Model<Datum> {
   @Column({ type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true })
   id: number;
 
-  @Column({ type: DataType.STRING,allowNull: false })
+  @Column({ type: DataType.STRING, allowNull: false })
   name: string;
 
-  @Column({ type: DataType.INTEGER,allowNull: false })
+  @Column({ type: DataType.INTEGER, allowNull: false })
   age: number;
 
   // Один ко многим: один Datum может иметь множество скиллов
