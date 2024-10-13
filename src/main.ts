@@ -1,8 +1,10 @@
 
 
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common';
+
+import { AppModule } from './app.module';
 import { JwtAuthGuard } from './modules/auth/jwt-auth.guard';
 
 async function start() {
@@ -10,6 +12,12 @@ async function start() {
   const app = await NestFactory.create(AppModule);
 
   app.setGlobalPrefix('api/v1');
+
+  app.useGlobalPipes(new ValidationPipe({
+    whitelist: true,  // Убирает поля, которых нет в DTO
+    forbidNonWhitelisted: true,  // Бросает ошибку, если есть лишние поля
+    transform: true,  // Автоматически преобразует примитивные типы
+  }));
 
   app.enableCors({
     origin: 'http://localhost:3000', // замените на нужный вам источник

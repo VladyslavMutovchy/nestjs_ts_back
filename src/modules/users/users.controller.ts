@@ -22,11 +22,11 @@ export class UsersController {
 
 
   
-  @ApiOperation({summary: 'GetAll пользователей'})
-  @ApiResponse({status: 200, type: [User]})
-  @UseGuards(JwtAuthGuard)                  //
-  @Get()
-  getAll() {
-    return this.usersService.getAllUsers();
-  }
+  // @ApiOperation({summary: 'GetAll пользователей'})
+  // @ApiResponse({status: 200, type: [User]})
+  // @UseGuards(JwtAuthGuard)                  //
+  // @Get()
+  // getAll() {
+  //   return this.usersService.getAllUsers();
+  // }
 }

@@ -12,12 +12,13 @@ import { AuthModule } from '../auth/auth.module';
 @Module({
   controllers: [UsersController],
   providers: [UsersService],
-  imports: [forwardRef(()=> AuthModule),
+  imports: [
+    forwardRef(()=> AuthModule),
     SequelizeModule.forFeature([User, Role, UserRoles]),
     RolesModule
-  ], exports: [ 
+  ], 
+  exports: [ 
     UsersService
-    
   ]
 })
 export class UsersModule {}
