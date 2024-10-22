@@ -31,5 +31,19 @@ export class Role extends Model<Role,  RoleCreationAttrs> {
 
 @BelongsToMany(() => User, () => UserRoles) // связывание 2х таблиц,  users.model.ts --- roles.model.ts + подключить в модулях
 users:User[];
-  
+
+static async createDefaultRoles() {
+  const roles = [
+    { value: 'admin', description: 'Администратор' },
+    { value: 'moderator', description: 'Модератор' },
+    { value: 'user', description: 'Пользователь' }
+  ];
+
+  for (const role of roles) {
+    await Role.findOrCreate({
+      where: { value: role.value }, // проверяем по полю value
+      defaults: role,
+    });
+  }
+}
 }

@@ -23,7 +23,7 @@ services:
     ports:
       - '3000:3000' # Порт для фронтенда
     volumes:
-      - ../react_practice_ts/src/pages/App:/app/src/pages/App # Синхронизация папки App
+      - ../react_practice_ts/src:/app/src # Синхронизация папки App
       - ../react_practice_ts/node_modules:/app/node_modules # Монтируем node_modules, если это необходимо
     stdin_open: true # Для корректной работы hot-reload
     tty: true # Также для hot-reload

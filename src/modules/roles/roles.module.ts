@@ -1,5 +1,4 @@
-//roles/roles.module.ts
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { RolesService } from './roles.service';
 import { RolesController } from './roles.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
@@ -13,6 +12,13 @@ import { UserRoles } from './user-roles.model';
     imports: [
         SequelizeModule.forFeature([Role, User, UserRoles])
       ],
-      exports: [RolesService]
+    exports: [RolesService]
 })
-export class RolesModule {}
+export class RolesModule implements OnModuleInit { 
+    constructor(private readonly rolesService: RolesService) {}
+
+    async onModuleInit() {
+        await Role.createDefaultRoles(); 
+    }
+}
+ 
