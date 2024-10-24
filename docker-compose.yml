@@ -29,6 +29,7 @@ services:
     tty: true # Также для hot-reload
     depends_on:
       - node-app # Зависимость от бэкенда
+    command: ["npm", "start"]
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
